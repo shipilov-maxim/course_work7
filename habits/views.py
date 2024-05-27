@@ -16,9 +16,7 @@ class HabitsCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         """ Определяем порядок создания нового объекта """
 
-        new_habit = serializer.save()
-        new_habit.user = self.request.user
-        new_habit.save()
+        new_habit = serializer.save(user=self.request.user)
 
 
 class HabitsListAPIView(generics.ListAPIView):

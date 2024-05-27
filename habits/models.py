@@ -25,7 +25,7 @@ class Habit(models.Model):
                                       verbose_name='Связанная привычка')
     periodicity = models.PositiveIntegerField(default=1, choices=PERIODICITY_CHOICES, verbose_name='Периодичность')
     reward = models.CharField(max_length=300, **NULLABLE, verbose_name='Вознаграждение')
-    duration = models.DurationField(verbose_name='Длительность выполнения',
+    duration = models.DurationField(verbose_name='Длительность выполнения (сек)',
                                     validators=[MaxValueValidator(timedelta(seconds=120))])
     is_public = models.BooleanField(default=False, verbose_name='Признак публичности')
 
