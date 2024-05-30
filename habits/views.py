@@ -5,6 +5,7 @@ from habits.models import Habit
 from habits.paginators import Pagination
 from habits.permissions import IsOwner
 from habits.serializers import HabitSerializer
+from habits.services import create_periodic_task
 
 
 class HabitsCreateAPIView(generics.CreateAPIView):
@@ -17,6 +18,7 @@ class HabitsCreateAPIView(generics.CreateAPIView):
         """ Определяем порядок создания нового объекта """
 
         new_habit = serializer.save(user=self.request.user)
+        create_periodic_task(new_habit)
 
 
 class HabitsListAPIView(generics.ListAPIView):
@@ -30,8 +32,7 @@ class HabitsListAPIView(generics.ListAPIView):
     def get_queryset(self):
         """ Определяем параметры вывода объектов """
 
-        queryset = Habit.objects.filter(user=self.request.user)
-        return queryset
+        return Habit.objects.filter(user=self.request.user)
 
 
 class HabitsPublicListAPIView(generics.ListAPIView):
@@ -44,8 +45,7 @@ class HabitsPublicListAPIView(generics.ListAPIView):
     def get_queryset(self):
         """ Определяем параметры вывода объектов """
 
-        queryset = Habit.objects.filter(is_public=True)
-        return queryset
+        return Habit.objects.filter(is_public=True)
 
 
 class HabitsRetrieveAPIView(generics.RetrieveAPIView):

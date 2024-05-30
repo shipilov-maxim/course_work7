@@ -94,7 +94,7 @@ REST_FRAMEWORK = {
 
 CELERY_BEAT_SCHEDULE = {
     'task-name': {
-        # 'task': 'users.tasks.check_users',
+        'task': 'users.tasks.check_users',
         'schedule': timedelta(seconds=10),
     },
 }
