@@ -92,12 +92,12 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
 }
 
-CELERY_BEAT_SCHEDULE = {
-    'task-name': {
-        'task': 'users.tasks.check_users',
-        'schedule': timedelta(seconds=10),
-    },
-}
+# CELERY_BEAT_SCHEDULE = {
+#     'task-name': {
+#         'task': 'users.tasks.check_users',
+#         'schedule': timedelta(seconds=10),
+#     },
+# }
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=15),

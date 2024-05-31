@@ -4,8 +4,8 @@ from habits.services import remind_of_habit
 
 
 @shared_task
-def habit_track(habit_id):
+def habit_track(habit):
     """
     Таск Celery для напоминания о выполнении привычки
     """
-    remind_of_habit(habit_id)
+    remind_of_habit(habit)

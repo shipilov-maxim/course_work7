@@ -10,7 +10,9 @@ from users.models import NULLABLE
 class Habit(models.Model):
     PERIODICITY_CHOICES = [
         (1, 'Каждый день'),
-        (7, 'Каждую неделю')
+        (2, 'Каждый будний день'),
+        (3, 'Каждые выходные'),
+        (4, 'Каждую неделю')
     ]
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user',
