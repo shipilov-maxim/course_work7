@@ -9,3 +9,8 @@ def habit_track(habit_id):
     Таск Celery для напоминания о выполнении привычки
     """
     remind_of_habit(habit_id)
+
+
+@shared_task
+def aaaa():
+    return 'aaaaa'
