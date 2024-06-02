@@ -107,7 +107,7 @@ SIMPLE_JWT = {
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'Europe/Samara'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
