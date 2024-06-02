@@ -46,33 +46,18 @@ def create_periodic_task(habit):
     """
     Создание периодической задачи Celery
     """
-    # start_time = timezone.now().strftime("%d.%m.%Y") + habit.time.strftime(" %H:%M:%S")
-    # start_time_dt = dt.strptime(start_time, '%d.%m.%Y %H:%M:%S')
-    # aware_start_time_dt = make_aware(start_time_dt)
-    #
-    # PeriodicTask.objects.create(
-    #     interval=periodicity[habit.periodicity][0] if habit.periodicity in (1, 4) else None,
-    #     crontab=periodicity[habit.periodicity][0] if habit.periodicity in (2, 3) else None,
-    #     name=f'{habit.pk}',
-    #     task='habits.tasks.habit_track',
-    #     args=[habit.pk],
-    #     kwargs=json.dumps({
-    #         'habit_id': habit.pk,
-    #     }),
-    #     start_time=timezone.now()
-    #     # start_time=aware_start_time_dt
-    # )
-    schedule, created = IntervalSchedule.objects.get_or_create(
-        every=5,
-        period=IntervalSchedule.SECONDS,
-    )
+    start_time = timezone.now().strftime("%d.%m.%Y") + habit.time.strftime(" %H:%M:%S")
+    start_time_dt = dt.strptime(start_time, '%d.%m.%Y %H:%M:%S')
+    aware_start_time_dt = make_aware(start_time_dt)
+
     PeriodicTask.objects.create(
-        interval=schedule,
-        name=f'Send Habit {habit.pk} notification',
+        interval=periodicity[habit.periodicity][0] if habit.periodicity in (1, 4) else None,
+        crontab=periodicity[habit.periodicity][0] if habit.periodicity in (2, 3) else None,
+        name=f'{habit.pk}',
         task='habits.tasks.habit_track',
         args=[habit.pk],
         kwargs=json.dumps({
             'habit_id': habit.pk,
         }),
-        start_time=timezone.now()
+        start_time=aware_start_time_dt
     )
