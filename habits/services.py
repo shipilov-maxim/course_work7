@@ -8,6 +8,7 @@ from django_celery_beat.utils import make_aware
 
 from config.settings import TELEGRAM_API
 from habits.models import Habit
+# from habits.tasks import habit_track
 
 
 def send_tg_message(message, chat_id):
@@ -61,3 +62,4 @@ def create_periodic_task(habit):
         }),
         start_time=aware_start_time_dt
     )
+    # habit_track(habit.pk)
