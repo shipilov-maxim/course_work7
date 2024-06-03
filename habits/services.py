@@ -29,9 +29,8 @@ def remind_of_habit(habit_id):
     """
     habit = Habit.objects.get(pk=habit_id)
     if habit.user.chat_id:
-        message = f'''Привет!\nНе забудь сегодня выполнить привычку: '''
-        f''' "{habit.action}" в {habit.time.strftime("%H:%M")}'''
-        f'''Место: {habit.place}'''
+        message = f'''Привет!\nНе забудь сегодня выполнить привычку: "{habit.action}" в {habit.time.strftime("%H:%M")}\n
+        Место: {habit.place}'''
         send_tg_message(message, habit.user.chat_id)
 
 
