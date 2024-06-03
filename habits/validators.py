@@ -40,7 +40,6 @@ class RelatedHabitValidator:
     def __call__(self, value):
         related_habit = value.get(self.field)
         is_nice = value.get('is_nice')
-        # print(Habit.objects.get(id=related_habit).is_nice)
         if related_habit and not related_habit.is_nice:
             raise serializers.ValidationError(
                 'В связанные привычки могут попадать только привычки с признаком приятной привычки.')
