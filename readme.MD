@@ -2,39 +2,12 @@
 
 `git clone https://github.com/shipilov-maxim/course_work7.git`
 
-* Установка переменного окружения
+Заполните файл .env своими данным по примеру .env.sample
 
-`python -m venv venv`
 
-`pip install -r requirements.txt`
+Сборка и запуск контейнеров
 
-* Создайте файл .env по примеру .env.sample и заполните своими данными
-
-* Применение миграций
-
-`python manage.py makemigrations`
-
-`python manage.py migrate`
-
-* Установка фикстур
-
-`python manage.py loaddata data.json`
-
-* Запуск сервера
-
-`python manage.py runserver`
-
-* Запуск брокера
-
-`redis-server`
-
-* Запуск воркера(флаг "-P eventlet" на Windows)
-
-`celery -A config worker -l INFO`
-
-* Запуск celery-beat
-
-`celery -A config beat -l INFO`
+`docker-compose up --build`
 
 * Регистрация нового пользователя http://127.0.0.1:8000/users/users/ {POST}
 
